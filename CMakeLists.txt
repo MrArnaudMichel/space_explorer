@@ -5,7 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(C_Programming
         main.c
-#        Lab4/list.h
-#        Lab4/list.c
-        Lab5/list.c
-        Lab5/list.h)
+        Lab6/copy.c
+        Lab6/copy.h
+)
