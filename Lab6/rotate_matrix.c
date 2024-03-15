@@ -2,7 +2,7 @@
 // Created by arnaud on 08/03/24.
 //
 
-#include "copy.h"
+#include "rotateMatrix.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,7 +33,7 @@ void rotate_clockwise(char **matrix, int rows, int cols, int *out_rows, int *out
             temp_matrix[i][j] = matrix[j][i];
         }
     }
-
+/*
     for (int i = 0; i < cols; i++) {
         for (int j = 0; j < rows; j++) {
             char temp = temp_matrix[i][j];
@@ -41,7 +41,7 @@ void rotate_clockwise(char **matrix, int rows, int cols, int *out_rows, int *out
             temp_matrix[i][rows - j - 1] = temp;
         }
     }
-
+*/
     *out_rows = cols;
     *out_cols = rows;
 
@@ -54,39 +54,23 @@ void rotate_clockwise(char **matrix, int rows, int cols, int *out_rows, int *out
     free(temp_matrix);
 }
 
-char** keyboardInput(int nbStrings) {
-    char** strings = (char**)malloc(nbStrings * sizeof(char));
-    char* line = (char*)malloc(100 * sizeof(char));
-    for (int i = 0; i < nbStrings; i++) {
-        scanf("%s", line);
-        strings[i] = (char*)malloc(strlen(line) * sizeof(char));
-        strcpy(strings[i], line);
-    }
-    return strings;
-}
-
-void printInputs(char** strings, int nb) {
-    for (int i = 0; i < nb; i++) {
-        printf("%s\n", strings[i]);
-    }
-}
-
 int lab6() {
-    char** inputs = keyboardInput(4);
-    printInputs(inputs, 4);
-    free(inputs);
+    int nbDups;
     char my_string[10];
     int num_rows, num_cols, n;
     printf("Enter a string: ");
     scanf("%s", my_string);
+    printf("nbDuplicates ");
+    scanf("%d", &nbDups);
+
     n = strlen(my_string);
 
-    char **duplicates = (char **)malloc(n * sizeof(char *));
+    char **duplicates = (char **)malloc(strlen(my_string) * sizeof(char *));
     for (int i = 0; i < n; i++) {
         duplicates[i] = duplicate(my_string);
     }
 
-    rotate_clockwise(duplicates, n, strlen(my_string), &num_rows, &num_cols);
+    rotate_clockwise(duplicates, nbDups, strlen(my_string), &num_rows, &num_cols);
 
     for (int i = 0; i < num_rows; i++) {
         for (int j = 0; j < num_cols; j++) {
