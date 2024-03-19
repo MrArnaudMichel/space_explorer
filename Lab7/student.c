@@ -9,6 +9,7 @@
 
 #include "structs.h"
 
+
 void student_init(student* student) {
 	student->name = malloc(100 * sizeof(char));
 	student->num_subjects = 0;
