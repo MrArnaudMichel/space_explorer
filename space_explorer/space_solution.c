@@ -38,12 +38,7 @@ ShipAction space_hop(unsigned int crt_planet, unsigned int* connections,
 	}
 	else {
 		action.next_planet = RAND_PLANET;
-		for (int i = 0; i < num_connections; i++) {
-			if (connections[i] != state->last_planet) {
-				action.next_planet = connections[i];
-				break;
-			}
-		}
+		printf("Exploring from planet %d\n", crt_planet);
 	}
 
 	return action;
