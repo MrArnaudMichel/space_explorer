@@ -4,6 +4,8 @@
 #include <math.h>
 #include "space_explorer.h"
 
+#include <time.h>
+
 #define DIST_THRESHOLD  1
 
 #ifndef srand48
