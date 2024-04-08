@@ -69,9 +69,8 @@ ShipAction space_hop(unsigned int crt_planet, unsigned int* connections,
     } else {
         add_planet(crt_planet, connections, num_connections, distance_from_mixer, state);
         // Crée un algorithme avec backtracking
-
     }
-
+    action.next_planet = RAND_PLANET;
     action.ship_state = state;
     return action;
 }
