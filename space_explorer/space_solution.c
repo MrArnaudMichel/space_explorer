@@ -76,7 +76,6 @@ void dijkstra(Node** nodes, int num_nodes) {
     }
 }
 
-
 // Fonction pour trouver le prochain noeud (planète) à visiter selon l'algorithme de Dijkstra
 unsigned int find_next_planet(Node** nodes, int num_nodes, unsigned int current_planet) {
     for (int i = 0; i < num_nodes; i++) {
