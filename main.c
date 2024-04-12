@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "Lab7/structs.h"
-#include "Lab7/student.h"
+#include "Lab8/structs.h"
+#include "Lab8/student.h"
 
 int main(int argc, char* argv[]) {
 	student* stud = malloc(sizeof(student));
