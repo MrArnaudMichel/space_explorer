@@ -81,8 +81,8 @@ void display_subject_statistics(const student *student) {
 	float max = 0;
 	int index_max = 0;
     subject *node = student->subjects;
-    mean += node->grade;
-    while (node->next != NULL) {
+    //mean += node->grade;
+    while (node != NULL) {
         mean += node->grade;
         if (node->grade > max) {
             max = node->grade;

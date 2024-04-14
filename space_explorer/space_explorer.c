@@ -174,7 +174,7 @@ Point* generate_poisson_points(double density, double xlim[2], double ylim[2],
 
 int main(int argc, char* argv[]) {
     // Define parameters
-    double density = 3; // Adjust density as needed
+    double density = 5; // Adjust density as needed
     double xlim[2] = {0, 10}; // X-axis limits
     double ylim[2] = {0, 10}; // Y-axis limits
     int num_points;
@@ -186,7 +186,7 @@ int main(int argc, char* argv[]) {
     } else {
         seed = 12; // Default seed if not provided
     }
-    srand48(seed);
+    srand48(time(NULL));
 
     // Generate Poisson points
     Point* points = generate_poisson_points(density, xlim, ylim, &num_points);
