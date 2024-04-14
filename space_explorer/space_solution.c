@@ -1,3 +1,7 @@
+//
+// Created by arnaud on 21/03/24.
+//
+
 #include <stdbool.h>
 #include "space_explorer.h"
 #include <stdlib.h>
@@ -76,13 +80,15 @@ ShipAction space_hop(unsigned int crt_planet,
     }
 
     if (!is_visited(state, crt_planet)) {
-        if (state->search_other) {
-            state->search_other = false;
-        }
         state->nodes = realloc(state->nodes, (state->num_nodes + 1) * sizeof(Node *));
         state->nodes[state->num_nodes] = init_node(crt_planet, distance_from_mixer, connections, num_connections);
         state->nodes[state->num_nodes]->previous = get_node(state, state->previous_planet);
         state->num_nodes++;
+
+        if (state->search_other) {
+            state->search_other = false;
+            get_node(state, crt_planet)->previous = NULL;
+        }
 
         if (state->nodes[state->num_nodes - 1]->previous != NULL) {
             if (state->nodes[state->num_nodes - 1]->distance > state->nodes[state->num_nodes - 1]->previous->distance) {
@@ -96,6 +102,10 @@ ShipAction space_hop(unsigned int crt_planet,
                 }
             }
         }
+    } else if (state->search_other) {
+        action.next_planet = RAND_PLANET;
+        action.ship_state = state;
+        return action;
     }
 
     for (int i = 0; i < num_connections; i++) {
@@ -107,7 +117,7 @@ ShipAction space_hop(unsigned int crt_planet,
         }
     }
 
-    // Graphe non connexe
+    // Graph not fully connected
     if (get_node(state, crt_planet)->previous == NULL) {
         action.next_planet = RAND_PLANET;
         state->search_other = true;
